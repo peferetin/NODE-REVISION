@@ -15,6 +15,14 @@ const apiCall = async () => {
     const response = await axios.get(
       "https://jsonplaceholder.typicode.com/users"
     );
+    fs.writeFileSync(
+      "response.json",
+      JSON.stringify(response.data),
+      "utf-8",
+      (err) => {
+        if (err) throw err;
+      }
+    );
     console.log(response);
   } catch (err) {
     console.log(err);
